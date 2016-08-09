@@ -1,7 +1,7 @@
 {
-  "name": "node-app",
-  "version": "0.2.5",
-  "description": "A sample Node.js app using Express 4",
+  "name": "scratch",
+  "version": "0.0",
+  "description": "My scratchpad",
   "engines": {
     "node": "5.9.1"
   },
@@ -12,11 +12,12 @@
   "dependencies": {
     "ejs": "2.4.1",
     "express": "4.13.3",
-    "opbeat": "^3.14.0"
+    "opbeat": "^3.14.0",
+    "pg": "6.0.3"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vrthra/node-app"
+    "url": "https://github.com/vrthra/scratch"
   },
   "keywords": [
     "node",

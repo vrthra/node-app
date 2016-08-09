@@ -1,7 +1,7 @@
 {
-  "name": "Node.js scratch",
-  "description": "A barebones Node.js app using Express 4",
-  "repository": "https://github.com/vrthra/node-app",
+  "name": "Scratch",
+  "description": "My scratch",
+  "repository": "https://github.com/vrthra/scratch",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["node", "express", "static"],
   "image": "heroku/nodejs"

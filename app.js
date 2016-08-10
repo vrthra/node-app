@@ -25,6 +25,25 @@ app.get('/', function(req, res, next) {
 });
 });
 
+app.post('/remove', function(req, res, next) {
+  var key = req.body.key;
+  console.log(key);
+  if (key != "axemurder") {
+    res.send("");
+    return;
+  }
+  pg.pool.query('DELETE from links WHERE id = $1', [req.body.id], function(err, result) {
+    if (err) {
+      next(err);
+      return;
+    }
+    pg.pool.query('SELECT * from links', function(err, result) {
+      rows = JSON.stringify(result.rows);
+      res.send(rows);
+    });
+  });
+});
+
 app.post('/insert', function(req, res, next) {
   var key = req.body.key;
   console.log(key);

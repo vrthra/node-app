@@ -2,9 +2,16 @@
     <tbody id="rows">
       {{#each rows}}
       <tr>
-        <td><a href="{{this.link}}">{{this.text}}</a></td><td><input type='button' class='remove' label='X' value='{{this.id}}'/></td><td><input class='update' type='button' label='O' value='{{this.id}}'/></td>
+        <td><a href="{{this.link}}">{{this.text}}</a></td><td><input type='button' class='remove' value='X' name='{{this.id}}'/></td><td><input class='update' type='button' value='O' name='{{this.id}}'/></td>
       </tr>
     {{/each}}
     </tbody>
   </table>
   <input type='button' label='add' id='add'/>
+
+<div id='inputdiv' style='display: none'>
+<label>key:<input type='text' id='ikey'/></label>
+<label>caption:<input type='text' id='itext'/></label>
+<label>link:<input type='text' id='ilink'/></label>
+<input type='button' value='save' id='bsave'/>
+</div>

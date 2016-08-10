@@ -2,7 +2,7 @@
     <tbody id="rows">
       {{#each rows}}
       <tr>
-        <td><a href="{{this.link}}">{{this.text}}</a></td>
+        <td><a href="{{this.link}}">{{this.text}}</a></td><td><input type='button' class='remove' text='X' id='{{this.id}}'/></td><td><input class='update' type='button' text='E' id='{{this.id}}'/></td>
       </tr>
     {{/each}}
     </tbody>

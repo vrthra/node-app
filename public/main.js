@@ -11,7 +11,7 @@ function bindKeys() {
   for (let v of document.getElementsByClassName("remove")) {
     v.addEventListener("click", function(event) {
       var req = new XMLHttpRequest();
-      var payload = {key: mykey, id:this.value}
+      var payload = {id:this.value}
       req.open("POST", "/remove", true);
       req.setRequestHeader("Content-Tpye", "application/json");
       req.addEventListener("load", function() {
@@ -36,11 +36,10 @@ document.getElementById("add").addEventListener("click", function(event) {
 document.getElementById("bsave").addEventListener("click", function(event) {
   document.getElementById("inputdiv").style = 'display: none';
   var mytext = document.getElementById("itext").value;
-  var mykey = document.getElementById("ikey").value;
   var mylink = document.getElementById("ilink").value;
   var myid = document.getElementById("myid").value;
   var req = new XMLHttpRequest();
-  var payload = {key:mykey, link:mylink, text:mytext};
+  var payload = {link:mylink, text:mytext};
   if (myid != '') {
     payload.id = myid;
     req.open("POST", "/update", true);

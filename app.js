@@ -1,11 +1,4 @@
 var pg = require('./dbcon.js')
-var opbeat = require('opbeat').start({ // perf monitoring
-    appId: 'scratch',
-    organizationId: 'gopinath',
-    secretToken: 'my-very-sekrit-token',
-    active: process.env.NODE_ENV === 'production'
-})
-
 var express = require('express');
 var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
@@ -20,7 +13,6 @@ app.set('view engine', 'handlebars');
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
-app.use(opbeat.middleware.express())
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');

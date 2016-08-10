@@ -22,7 +22,7 @@ for (let v of document.getElementsByClassName("remove")) {
 }
 
 document.getElementById("add").addEventListener("click", function(event) {
-  document.getElementById("inputdiv").style = 'display: block; position: fixed; bottom: 0; right: 0; width: 400px; border: 3px solid #73AD21;'
+  document.getElementById("inputdiv").style = 'display: block; position: fixed; bottom: 0; right: 0; width: 600px; border: 3px solid #73AD21;'
   event.preventDefault();
 });
 
@@ -39,6 +39,13 @@ document.getElementById("bsave").addEventListener("click", function(event) {
     if(req.status >= 200 && req.status < 400) {
       var response = JSON.parse(req.responseText);
       console.log(response);
+      iTbody = document.getElementById('rows'); //tbody
+      iTbody.innerHTML = '';
+      for(x of response) {
+         var iTr = document.createElement("tr");
+         iTr.innerHTML = '<td><a href="' + x.link + '">' + x.text + '</a></td><td><input type="button" class="remove" value="X" name="' + x.id + '"/></td><td><input class="update" type="button" value="O" name="' + x.id + '"/></td>';
+         itbody.appendChild(iTr);
+      }
     }
   });
   req.send(JSON.stringify(payload));

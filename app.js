@@ -1,5 +1,10 @@
 var pg = require('./dbcon.js')
-var opbeat = require('opbeat').start() // perf monitoring
+var opbeat = require('opbeat').start({ // perf monitoring
+    appId: 'scratch',
+    organizationId: 'gopinath',
+    secretToken: 'my-very-sekrit-token',
+    active: process.env.NODE_ENV === 'production'
+})
 
 var express = require('express');
 var app = express();

@@ -27,7 +27,7 @@ app.get('/', function(req, res, next) {
 
 app.post('/insert', function(req, res, next) {
   console.log("body:")
-  console.log(req.body);
+  console.log(req);
   var key = req.body.key;
   console.log("key:")
   console.log(key);

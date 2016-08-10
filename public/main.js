@@ -1,9 +1,9 @@
 for (let v of document.getElementsByClassName("update")) {
   v.addEventListener("click", function(event) {
     //var payload = {key:mykey, id:this.value};
-    document.getElementById("itext").value = this.parentElement.child[0].text;
-    document.getElementById("ikey").value =  this.parentElement.child[1].text;
-    document.getElementById("ilink").value =  this.parentElement.child[2].text;
+    document.getElementById("itext").value = this.parentElement.parentElement.children[0].children[0].text;
+    document.getElementById("myid").value =   this.parentElement.parentElement.children[2].children[0].text;
+    document.getElementById("ilink").value = this.parentElement.parentElement.children[0].children[0].href;
     document.getElementById("inputdiv").style = 'display: block';
   });
 }

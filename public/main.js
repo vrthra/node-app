@@ -11,7 +11,7 @@ function bindKeys() {
   for (let v of document.getElementsByClassName("remove")) {
     v.addEventListener("click", function(event) {
       var req = new XMLHttpRequest();
-      var payload = {id:this.value}
+      var payload = {id:this.name}
       req.open("POST", "/remove", true);
       req.setRequestHeader("Content-Tpye", "application/json");
       req.addEventListener("load", function() {

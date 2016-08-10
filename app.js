@@ -54,7 +54,7 @@ app.post('/update', function(req, res, next) {
   var link = req.body.link;
   var text = req.body.text;
   var id = req.body.id;
-  pg.pool.query('UPDATE links set link=$1, text=$2 where id=$3', [link, text, id], function(err, result) {
+  pg.pool.query('UPDATE links SET link=($1), text=($2) WHERE id=($3)', [link, text, id], function(err, result) {
     if (err) {
       next(err);
       return;

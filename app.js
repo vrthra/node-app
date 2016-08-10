@@ -1,5 +1,5 @@
-// var pg = require('./dbcon.js')
-//var opbeat = require('opbeat').start() // perf monitoring
+var pg = require('./dbcon.js')
+var opbeat = require('opbeat').start() // perf monitoring
 
 var express = require('express');
 var app = express();

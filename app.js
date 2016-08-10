@@ -27,8 +27,11 @@ app.set('views', __dirname + '/views');
 
 app.get('/', function(req, res, next) {
   var context = {}
-  context.me = "World";
-  res.render('home');
+  context.rows = [
+    {"link" : "/", "text" : "Home"},
+    {"link" : "http://www.google.com", "text" : "google"},
+  ];
+  res.render('home', context);
 });
 
 app.listen(app.get('port'), function() { console.log('Scratch is running on port', app.get('port')); });

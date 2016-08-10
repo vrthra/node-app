@@ -1,1 +1,9 @@
-Hello {{me}}
+  <table>
+    <tbody id="rows">
+      {{#each rows}}
+      <tr>
+        <td><a href="{{this.link}}">{{this.text}}</a></td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>

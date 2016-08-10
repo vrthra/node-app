@@ -26,8 +26,11 @@ app.get('/', function(req, res, next) {
 });
 
 app.post('/insert', function(req, res, next) {
+  console.log("body:")
   console.log(req.body);
   var key = req.body.key;
+  console.log("key:")
+  console.log(key);
   pg.pool.query('SELECT * from links', function(err, result) {
     rows = JSON.stringify(result.rows);
     res.send(rows);

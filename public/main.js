@@ -1,6 +1,6 @@
 for (let v of document.getElementsByClassName("update")) {
   v.addEventListener("click", function(event) {
-    var payload = {key:mykey, id:this.value};
+    //var payload = {key:mykey, id:this.value};
     document.getElementById("itext").value = this.parentElement.child[0].text;
     document.getElementById("ikey").value =  this.parentElement.child[1].text;
     document.getElementById("ilink").value =  this.parentElement.child[2].text;
@@ -60,7 +60,9 @@ function reconstruct(response) {
   iTbody.innerHTML = '';
   for(x of response) {
     var iTr = document.createElement("tr");
-    iTr.innerHTML = '<td><a href="' + x.link + '">' + x.text + '</a></td><td><input type="button" class="remove" value="X" name="' + x.id + '"/></td><td><input class="update" type="button" value="O" name="' + x.id + '"/></td>';
+    iTr.innerHTML = '<td><a href="' + x.link + '">' + x.text + '</a></td>' +
+      '<td><input type="button" class="remove" value="X" name="' + x.id + '"/></td>'+
+      '<td><input class="update" type="button" value="O" name="' + x.id + '"/></td>';
     iTbody.appendChild(iTr);
   }
 }

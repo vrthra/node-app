@@ -13,7 +13,7 @@ function bindKeys() {
       var req = new XMLHttpRequest();
       var payload = {id:this.name}
       req.open("POST", "/remove", true);
-      req.setRequestHeader("Content-Tpye", "application/json");
+      req.setRequestHeader("Content-Type", "application/json");
       req.addEventListener("load", function() {
         if(req.status >= 200 && req.status < 400) {
           var response = JSON.parse(req.responseText);

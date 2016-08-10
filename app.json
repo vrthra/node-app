@@ -3,6 +3,6 @@
   "description": "My scratch",
   "repository": "https://github.com/vrthra/scratch",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
-  "keywords": ["node", "express", "static"],
+  "keywords": ["node", "express", "express-handlebars", "static"],
   "image": "heroku/nodejs"
 }

@@ -23,7 +23,8 @@
   "keywords": [
     "node",
     "heroku",
-    "express"
+    "express",
+    "express-handlebars"
   ],
   "license": "MIT"
 }

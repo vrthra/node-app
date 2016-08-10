@@ -31,7 +31,7 @@ app.post('/insert', function(req, res, next) {
   pg.pool.query('SELECT * from links', function(err, result) {
     rows = JSON.stringify(result);
     res.send(rows);
-  }
+  });
 });
 
 app.listen(app.get('port'), function() { console.log('Scratch is running on port', app.get('port')); });

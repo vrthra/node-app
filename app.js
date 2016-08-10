@@ -35,7 +35,7 @@ app.post('/insert', function(req, res, next) {
   }
   var link = req.body.link;
   var text = req.body.text;
-  pg.pool.query('INSERT into links (`link`, `text`) VALUES (?, ?)', [link, text], function(err, result) {
+  pg.pool.query('INSERT into links (link, text) VALUES (?, ?)', [link, text], function(err, result) {
     if (err) {
       next(err);
       return;

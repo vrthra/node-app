@@ -21,16 +21,16 @@ for (let v of document.getElementsByClassName("remove")) {
   });
 }
 
-document.getElementsById("add").addEventListener("click", function(event) {
-  document.getElementsById("inputdiv").style = 'display: block; position: fixed; bottom: 0; right: 0; width: 300px; border: 3px solid #73AD21;'
+document.getElementById("add").addEventListener("click", function(event) {
+  document.getElementById("inputdiv").style = 'display: block; position: fixed; bottom: 0; right: 0; width: 300px; border: 3px solid #73AD21;'
   event.preventDefault();
 });
 
-document.getElementsById("bsave").addEventListener("click", function(event) {
-  document.getElementsById("inputdiv").style = 'display: none';
-  var mytext = document.getElementsById("itext").value;
-  var mykey = document.getElementsById("ikey").value;
-  var mylink = document.getElementsById("ilink").value;
+document.getElementById("bsave").addEventListener("click", function(event) {
+  document.getElementById("inputdiv").style = 'display: none';
+  var mytext = document.getElementById("itext").value;
+  var mykey = document.getElementById("ikey").value;
+  var mylink = document.getElementById("ilink").value;
   var req = new XMLHttpRequest();
   var payload = {key:mykey, link:mylink, text:mytext};
   req.open("POST", "/insert", true);

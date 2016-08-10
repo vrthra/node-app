@@ -44,6 +44,28 @@ app.post('/remove', function(req, res, next) {
   });
 });
 
+app.post('/update', function(req, res, next) {
+  var key = req.body.key;
+  console.log(key);
+  if (key != "axemurder") {
+    res.send("");
+    return;
+  }
+  var link = req.body.link;
+  var text = req.body.text;
+  var id = req.body.id;
+  pg.pool.query('UPDATE links set link=$1, text=$2 where id=$3', [link, text, id], function(err, result) {
+    if (err) {
+      next(err);
+      return;
+    }
+    pg.pool.query('SELECT * from links', function(err, result) {
+      rows = JSON.stringify(result.rows);
+      res.send(rows);
+    });
+  });
+});
+
 app.post('/insert', function(req, res, next) {
   var key = req.body.key;
   console.log(key);

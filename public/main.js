@@ -1,29 +1,32 @@
-for (let v of document.getElementsByClassName("update")) {
-  v.addEventListener("click", function(event) {
-    //var payload = {key:mykey, id:this.value};
-    document.getElementById("itext").value = this.parentElement.parentElement.children[0].children[0].text;
-    document.getElementById("myid").value =   this.parentElement.parentElement.children[2].children[0].name;
-    document.getElementById("ilink").value = this.parentElement.parentElement.children[0].children[0].href;
-    document.getElementById("inputdiv").style = 'display: block';
-  });
+function bindKeys() {
+  for (let v of document.getElementsByClassName("update")) {
+    v.addEventListener("click", function(event) {
+      document.getElementById("myid").value =   this.parentElement.parentElement.children[2].children[0].name;
+      document.getElementById("itext").value = this.parentElement.parentElement.children[0].children[0].text;
+      document.getElementById("ilink").value = this.parentElement.parentElement.children[0].children[0].href;
+      document.getElementById("inputdiv").style = 'display: block';
+    });
+  }
+
+  for (let v of document.getElementsByClassName("remove")) {
+    v.addEventListener("click", function(event) {
+      var req = new XMLHttpRequest();
+      var payload = {key: mykey, id:this.value}
+      req.open("POST", "/remove", true);
+      req.setRequestHeader("Content-Tpye", "application/json");
+      req.addEventListener("load", function() {
+        if(req.status >= 200 && req.status < 400) {
+          var response = JSON.parse(req.responseText);
+          reconstruct(response);
+        }
+      });
+      req.send(JSON.stringify(payload));
+      event.preventDefault();
+    });
+  }
 }
 
-for (let v of document.getElementsByClassName("remove")) {
-  v.addEventListener("click", function(event) {
-    var req = new XMLHttpRequest();
-    var payload = {key: mykey, id:this.value}
-    req.open("POST", "/remove", true);
-    req.setRequestHeader("Content-Tpye", "application/json");
-    req.addEventListener("load", function() {
-      if(req.status >= 200 && req.status < 400) {
-        var response = JSON.parse(req.responseText);
-        reconstruct(response);
-      }
-    });
-    req.send(JSON.stringify(payload));
-    event.preventDefault();
-  });
-}
+bindKeys();
 
 document.getElementById("add").addEventListener("click", function(event) {
   document.getElementById("inputdiv").style = 'display: block; position: fixed; bottom: 0; right: 0; width: 600px; border: 3px solid #73AD21;'
@@ -65,4 +68,6 @@ function reconstruct(response) {
       '<td><input class="update" type="button" value="O" name="' + x.id + '"/></td>';
     iTbody.appendChild(iTr);
   }
+  bindKeys();
 }
+

@@ -44,7 +44,7 @@ document.getElementById("bsave").addEventListener("click", function(event) {
       for(x of response) {
          var iTr = document.createElement("tr");
          iTr.innerHTML = '<td><a href="' + x.link + '">' + x.text + '</a></td><td><input type="button" class="remove" value="X" name="' + x.id + '"/></td><td><input class="update" type="button" value="O" name="' + x.id + '"/></td>';
-         itbody.appendChild(iTr);
+         iTbody.appendChild(iTr);
       }
     }
   });

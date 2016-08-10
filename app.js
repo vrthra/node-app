@@ -19,11 +19,18 @@ app.set('views', __dirname + '/views');
 
 app.get('/', function(req, res, next) {
   var context = {}
-  context.rows = [
-    {"link" : "/", "text" : "Home"},
-    {"link" : "http://www.google.com", "text" : "google"},
-  ];
-  res.render('home', context);
+  //context.rows = [
+  //  {"link" : "/", "text" : "Home"},
+  //  {"link" : "http://www.google.com", "text" : "google"},
+  //];
+  pg.pool.query('SELECT * from links', function(err, result) {
+    console.log(result.rows[0]); // output: foo
+    context.rows = result.rows;
+    res.render('home', context);
+});
+});
+
+app.get('/reset', function(req, res, next) {
 });
 
 app.listen(app.get('port'), function() { console.log('Scratch is running on port', app.get('port')); });

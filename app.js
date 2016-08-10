@@ -59,10 +59,7 @@ app.post('/remove', function(req, res, next) {
       next(err);
       return;
     }
-    pg.pool.query('SELECT * from links', function(err, result) {
-      rows = JSON.stringify(result.rows);
-      res.send(rows);
-    });
+    sendrows(res)
   });
 });
 
@@ -76,10 +73,7 @@ app.post('/update', function(req, res, next) {
       next(err);
       return;
     }
-    pg.pool.query('SELECT * from links', function(err, result) {
-      rows = JSON.stringify(result.rows);
-      res.send(rows);
-    });
+    sendrows(res)
   });
 });
 
@@ -92,10 +86,7 @@ app.post('/insert', function(req, res, next) {
       next(err);
       return;
     }
-    pg.pool.query('SELECT * from links', function(err, result) {
-      rows = JSON.stringify(result.rows);
-      res.send(rows);
-    });
+    sendrows(res)
   });
 });
 
@@ -106,4 +97,11 @@ function checkValid(req) {
     return false;
   }
   return true
+}
+
+function sendrows(res) {
+  pg.pool.query('SELECT * from links ORDER BY id ASC', function(err, result) {
+    rows = JSON.stringify(result.rows);
+    res.send(rows);
+  });
 }

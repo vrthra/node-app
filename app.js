@@ -19,7 +19,7 @@ app.use(express.static('public'));
 // views is directory for all template files
 app.set('views', __dirname + '/views');
 
-app.post('/logout', function(req, res, next) {
+app.get('/logout', function(req, res, next) {
   var context = {}
   req.session.destroy();
   res.redirect('/');

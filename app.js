@@ -52,7 +52,7 @@ app.get('/', function(req, res, next) {
 
 app.post('/remove', function(req, res, next) {
   if (!checkValid(req)) return '';
-  pg.pool.query('DELETE from links WHERE id = $1', [req.body.id], function(err, result) {
+  pg.pool.query('DELETE from links WHERE id=($1)', [req.body.id], function(err, result) {
     if (err) {
       next(err);
       return;

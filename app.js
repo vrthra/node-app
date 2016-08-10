@@ -29,9 +29,7 @@ app.post('/insert', function(req, res, next) {
   var key = req.body.key;
   console.log(key);
   if (key != "axemurder") {
-  console.log("not key");
-  } else {
-  console.log("yes key");
+    return;
   }
   var link = req.body.link;
   var text = req.body.text;

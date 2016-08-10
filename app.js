@@ -26,14 +26,18 @@ app.get('/', function(req, res, next) {
 });
 
 app.post('/insert', function(req, res, next) {
-  console.log("body:")
-  console.log(req);
   var key = req.body.key;
-  console.log("key:")
-  console.log(key);
-  pg.pool.query('SELECT * from links', function(err, result) {
-    rows = JSON.stringify(result.rows);
-    res.send(rows);
+  if (key != "axemurder") return;
+  var link = req.body.link;
+  var text = req.body.text;
+  pg.pool.query('INSERT into links (`link`, `text`) VALUES (?, ?)', [link, text], function(err, result) {
+    if (err) {
+      return(err);
+    }
+    pg.pool.query('SELECT * from links', function(err, result) {
+      rows = JSON.stringify(result.rows);
+      res.send(rows);
+    });
   });
 });
 

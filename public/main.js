@@ -62,6 +62,7 @@ function fetchInput() {
 }
 
 function reqJSON(action, payload, onresponse) {
+  var req = new XMLHttpRequest();
   req.open("POST", action, true);
   req.setRequestHeader("Content-Type", "application/json");
   req.addEventListener("load", function() {

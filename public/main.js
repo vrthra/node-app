@@ -1,10 +1,8 @@
 function bindKeys() {
   for (let v of document.getElementsByClassName("update")) {
     v.addEventListener("click", function(event) {
-      document.getElementById("myid").value =   this.parentElement.parentElement.children[2].children[0].name;
-      document.getElementById("itext").value = this.parentElement.parentElement.children[0].children[0].text;
-      document.getElementById("ilink").value = this.parentElement.parentElement.children[0].children[0].href;
-      document.getElementById("inputdiv").style = 'display: block';
+      iTr = this.parentElement.parentElement;
+      showInput(iTr.children[2].children[0].name, iTr.children[0].children[0].text, iTr.children[0].children[0].href);
     });
   }
 
@@ -24,14 +22,14 @@ function bindKeys() {
       event.preventDefault();
     });
   }
+  document.getElementById("add").addEventListener("click", function(event) {
+    showInput("", "", "");
+    event.preventDefault();
+  });
 }
 
 bindKeys();
 
-document.getElementById("add").addEventListener("click", function(event) {
-  document.getElementById("inputdiv").style = 'display: block; position: fixed; bottom: 0; right: 0; width: 600px; border: 3px solid #73AD21;'
-  event.preventDefault();
-});
 
 document.getElementById("bsave").addEventListener("click", function(event) {
   document.getElementById("inputdiv").style = 'display: none';
@@ -70,3 +68,9 @@ function reconstruct(response) {
   bindKeys();
 }
 
+showInput(myid, itext, ilink) {
+  document.getElementById("myid").value =   myid
+  document.getElementById("itext").value = itext
+  document.getElementById("ilink").value = ilink
+  document.getElementById("inputdiv").style = 'display: block'
+}

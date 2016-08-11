@@ -1,1 +1,8 @@
-
+inputbox {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 500px;
+  border: 3px solid black;
+}

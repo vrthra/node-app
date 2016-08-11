@@ -28,7 +28,6 @@ function bindKeys() {
     reqJSON(action, payload, reconstruct);
     event.preventDefault();
   });
-
 }
 
 bindKeys();
@@ -46,13 +45,14 @@ function reconstruct(response) {
   bindKeys();
 }
 
-showInput(myid, itext, ilink) {
-  document.getElementById("myid").value =   myid
-  document.getElementById("itext").value = itext
-  document.getElementById("ilink").value = ilink
-  document.getElementById("inputdiv").style.display = 'block'
+function showInput(myid, itext, ilink) {
+  document.getElementById("myid").value = myid;
+  document.getElementById("itext").value = itext;
+  document.getElementById("ilink").value = ilink;
+  document.getElementById("inputdiv").style.display = 'block';
 }
-fetchInput() {
+
+function fetchInput() {
   document.getElementById("inputdiv").style.display = 'none';
   var ret = {}
   ret.text = document.getElementById("itext").value;
@@ -61,7 +61,7 @@ fetchInput() {
   return ret
 }
 
-reqJSON(action, payload, onresponse) {
+function reqJSON(action, payload, onresponse) {
   req.open("POST", action, true);
   req.setRequestHeader("Content-Type", "application/json");
   req.addEventListener("load", function() {

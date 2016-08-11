@@ -8,52 +8,30 @@ function bindKeys() {
 
   for (let v of document.getElementsByClassName("remove")) {
     v.addEventListener("click", function(event) {
-      var req = new XMLHttpRequest();
       var payload = {id:this.name}
-      req.open("POST", "/remove", true);
-      req.setRequestHeader("Content-Type", "application/json");
-      req.addEventListener("load", function() {
-        if(req.status >= 200 && req.status < 400) {
-          var response = JSON.parse(req.responseText);
-          reconstruct(response);
-        }
-      });
-      req.send(JSON.stringify(payload));
+      reqJSON("/remove", payload, reconstruct);
       event.preventDefault();
     });
   }
+
   document.getElementById("add").addEventListener("click", function(event) {
     showInput("", "", "");
     event.preventDefault();
   });
+
+  document.getElementById("bsave").addEventListener("click", function(event) {
+    var payload = fetchInput();
+    var action = '/insert';
+    if (payload.myid != '') {
+      action = "/update";
+    }
+    reqJSON(action, payload, reconstruct);
+    event.preventDefault();
+  });
+
 }
 
 bindKeys();
-
-
-document.getElementById("bsave").addEventListener("click", function(event) {
-  document.getElementById("inputdiv").style = 'display: none';
-  var mytext = document.getElementById("itext").value;
-  var mylink = document.getElementById("ilink").value;
-  var myid = document.getElementById("myid").value;
-  var req = new XMLHttpRequest();
-  var payload = {link:mylink, text:mytext};
-  if (myid != '') {
-    payload.id = myid;
-    req.open("POST", "/update", true);
-  } else {
-    req.open("POST", "/insert", true);
-  }
-  req.setRequestHeader("Content-Type", "application/json");
-  req.addEventListener("load", function() {
-    if(req.status >= 200 && req.status < 400) {
-      var response = JSON.parse(req.responseText);
-      reconstruct(response);
-    }
-  });
-  req.send(JSON.stringify(payload));
-  event.preventDefault();
-});
 
 function reconstruct(response) {
   iTbody = document.getElementById('rows'); //tbody
@@ -72,5 +50,26 @@ showInput(myid, itext, ilink) {
   document.getElementById("myid").value =   myid
   document.getElementById("itext").value = itext
   document.getElementById("ilink").value = ilink
-  document.getElementById("inputdiv").style = 'display: block'
+  document.getElementById("inputdiv").style.display = 'block'
 }
+fetchInput() {
+  document.getElementById("inputdiv").style.display = 'none';
+  var ret = {}
+  ret.text = document.getElementById("itext").value;
+  ret.link = document.getElementById("ilink").value;
+  ret.myid = document.getElementById("myid").value;
+  return ret
+}
+
+reqJSON(action, payload, onresponse) {
+  req.open("POST", action, true);
+  req.setRequestHeader("Content-Type", "application/json");
+  req.addEventListener("load", function() {
+    if(req.status >= 200 && req.status < 400) {
+      var response = JSON.parse(req.responseText);
+      onresponse(response);
+    }
+  });
+  req.send(JSON.stringify(payload));
+}
+

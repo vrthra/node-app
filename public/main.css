@@ -1,3 +1,32 @@
+/* Hint
+ *
+ * Basic Type
+ *     You can specify an element name directly. For example p will target all
+ *     p elements.
+ * Descendant Selector
+ *     This will target all elements of type 'x' which are a descendant of
+ *     type 'y' with the syntax y x. So nav ul will apply a style to all ul
+ *     elements which are contained in a nav element.
+ * Child Selector
+ *     The child selector will target all element of type x which are
+ *     direct children of type y. The syntax is y>x. So nav>ul would
+ *     target ul elements who's direct parent is a nav element. But
+ *     unlike the decedent selector it would not target a ul within
+ *     a div within a nav because the ul is a child of the div, not the
+ *     nav.
+ * Adjacent Sibling
+ *     This will target all of element type x which is at the same
+ *     level on the tree and immediately after an element of type
+ *     y. The syntax is y+x. So h1+p would target a p if it
+ *     directly followed an h1. You might use this if you want your
+ *     headline paragraph to always look different than the rest of
+ *     the paragraphs in a news article for example.
+ * General Sibling
+ *     This is like the adjacent sibling except it does not
+ *     need to immediate follow. The syntax here is y~x. So
+ *     h1~p would target all paragraphs on the same level as
+ *     the h1 element, not just the one immediately after it. 
+ */
 .inputbox {
   display: none;
   position: fixed;
